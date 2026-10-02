@@ -1,4 +1,4 @@
-spring:
+  spring:
   application:
     name: digital-hoarding-backend
   datasource:
@@ -11,7 +11,7 @@ spring:
     open-in-view: false
 
 server:
-  port: 8080
+  port: ${SERVER_PORT:8083}
 
 app:
   fastapi-base-url: ${FASTAPI_BASE_URL:http://localhost:8000}
