@@ -1,0 +1,17 @@
+# Local PostgreSQL for development. Supabase is the real target;
+# this is only for working offline. Credentials come from ../.env
+services:
+  postgres:
+    image: postgres:16
+    container_name: hoarding-postgres
+    environment:
+      POSTGRES_DB: hoarding
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME:-hoarding}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD:?set SPRING_DATASOURCE_PASSWORD in .env}
+    ports:
+      - "5432:5432"
+    volumes:
+      - hoarding-pgdata:/var/lib/postgresql/data
+
+volumes:
+  hoarding-pgdata:
